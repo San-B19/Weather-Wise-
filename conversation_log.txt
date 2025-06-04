@@ -1,4 +1,46 @@
-SECTION 1 
+**SECTION 1.1**
 My AI Prompt:
-“Can you write pseudocode for a command-line Task Manager that allows the user to add, list, and remove tasks? The tasks should be stored in memory using a list. Please use only techniques suitable for an introductory Python course, 
-including basic loops, input/output, simple functions, and no advanced libraries.”
+Can you write pseudocode for a command-line Task Manager that allows the user to add, list, and remove tasks? The tasks should be stored in memory using a list. Please use only techniques suitable for an introductory Python course, including basic loops, input/output, simple functions, and no advanced libraries.
+
+ AI Response:
+
+ Define an empty list called tasks
+
+Define function display_menu():
+    Print options: 1. Add Task 2. List Tasks 3. Remove Task 4. Quit
+
+Define function add_task():
+    Ask user to input a task
+    Append task to tasks list
+    Print confirmation
+
+Define function list_tasks():
+    If tasks list is empty:
+        Print “No tasks available”
+    Else:
+        For each task with index:
+            Print index and task
+
+Define function remove_task():
+    Ask user for index of task to remove
+    If index is valid:
+        Remove task from list
+        Print confirmation
+    Else:
+        Print “Invalid index”
+
+Define function main():
+    While True:
+        Call display_menu()
+        Get user input
+        If input is 1:
+            Call add_task()
+        Else if 2:
+            Call list_tasks()
+        Else if 3:
+            Call remove_task()
+        Else if 4:
+            Break
+        Else:
+            Print “Invalid choice”
+Call main()
