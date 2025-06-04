@@ -1,4 +1,4 @@
-**SECTION 1.1**
+SECTION 1.1
 My AI Prompt:
 Can you write pseudocode for a command-line Task Manager that allows the user to add, list, and remove tasks? The tasks should be stored in memory using a list. Please use only techniques suitable for an introductory Python course, including basic loops, input/output, simple functions, and no advanced libraries.
 
@@ -44,3 +44,160 @@ Define function main():
         Else:
             Print “Invalid choice”
 Call main()
+
+
+
+SECTION 1.2
+Refinement 1 
+Ai prompt
+Please revise the pseudocode so that the user input is validated using try/except blocks to avoid crashes if they enter invalid choices. Also, make sure the remove_task function checks for out-of-range inputs.
+AI Response 1:
+
+Define function remove_task():
+    Try:
+        Ask user for index
+        Convert input to integer
+        If index is within range:
+            Remove task from tasks
+            Print confirmation
+        Else:
+            Print “Invalid index”
+    Except:
+        Print “Please enter a number”
+
+In main():
+    Try:
+        Get user input as integer
+        If input == 1, call add_task()
+        Else if 2, call list_tasks()
+        Else if 3, call remove_task()
+        Else if 4, break
+        Else, print “Invalid choice”
+    Except:
+        Print “Please enter a valid number”
+
+
+Refinement 2
+AI prompt
+Now enhance the pseudocode by including a dictionary structure to associate tasks with a priority level (e.g., 'High', 'Medium', 'Low'). Each task should be stored as a dictionary entry with a description and a priority. Use basic list of dictionaries
+AI reponse 
+
+Define an empty list called tasks
+
+Define function add_task():
+    Ask user for task description
+    Ask user for priority (High/Medium/Low)
+    Create task_dict with keys: 'description' and 'priority'
+    Append task_dict to tasks list
+
+Define function list_tasks():
+    If tasks is empty:
+        Print “No tasks”
+    Else:
+        For each task in tasks with index:
+            Print index, task['description'], task['priority']
+
+Define function remove_task():
+    Ask user for index
+    Try:
+        Convert input to integer
+        If valid index:
+            Remove task
+            Print confirmation
+        Else:
+            Print “Invalid index”
+    Except:
+        Print “Please enter a number”
+
+main(): unchanged from before
+
+
+
+SECTION 2.1
+My Prompt
+Can you review the following Python code for a simple task manager and identify any syntax or logic errors using only techniques from an introductory programming course
+AI response: 
+
+Certainly! Here’s a breakdown of the errors found in your code:
+
+1. **Line with 'if index < len(tas):'**  
+   - Error: Variable 'tas' is undefined. It’s likely a typo and should be 'tasks'.
+
+2. **Line with 'for i, t in enumerate(task):'**  
+   - Error: Variable 'task' is undefined in this context. You likely meant to use 'tasks', which is the list being iterated.
+
+3. **Line with 'list_task()'**  
+   - Error: The function is defined as 'list_tasks()'. This is a naming mismatch.
+
+Additional suggestions:
+- No input validation or try/except blocks are used when accessing list elements, which could cause runtime errors.
+- For user-facing functions, it’s better to use input() and validation, though that might not be the focus of this sample.
+
+Conclusion:
+Fix the variable name typos and ensure consistent function naming.
+
+
+
+SECTION 2.2 
+My Prompt to AI
+Please provide a corrected version of the task manager code using only introductory techniques taught in a beginner programming course
+AI’s Response: 
+
+tasks = []
+
+def add_task(task):
+    tasks.append(task)
+    print(f"Added: {task}")
+
+def remove_task(index):
+    try:
+        if index < len(tasks):
+            removed = tasks[index]
+            del tasks[index]
+            print(f"Removed: {removed}")
+        else:
+            print("Invalid index!")
+    except:
+        print("Error removing task")
+
+def list_tasks():
+    if not tasks:
+        print("No tasks available.")
+    else:
+        for i, t in enumerate(tasks):
+            print(f"{i+1}: {t}")
+
+def main():
+    add_task("Buy milk")
+    add_task("Pay bills")
+    add_task("Walk dog")
+    list_tasks()
+    remove_task(1)
+    list_tasks()
+
+if __name__ == "__main__":
+    main()
+
+
+
+SECTION 3.1
+Prompt to AI:
+Review this function using only error handling techniques taught in an introductory programming course. What problems do you see?
+AI Response:"
+
+1. No input validation:
+   The function does not check if the input `city` is empty or invalid.
+   → Fix: Add a simple `if not city:` check 
+
+2. Generic error message:
+   The `except:` block returns a vague message ("Error occurred").
+   → Fix: Use simple print statements to indicate what went wrong 
+
+3. Deep access in JSON without checking structure:
+   The function assumes the API response always contains `['current_condition'][0]['temp_C']`, which may not be true.
+   → Fix: Use nested try blocks or safer access patterns 
+
+
+
+
+
